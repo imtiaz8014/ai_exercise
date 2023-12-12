@@ -17,3 +17,14 @@ impute = SimpleImputer(missing_values=np.nan, strategy='mean')
 impute = impute.fit(X[:,1:3])
 X[:,1:3] = impute.transform(X[:,1:3])
  
+# Encoding categorical data
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from sklearn.compose import ColumnTransformer
+ct = ColumnTransformer(
+    transformers = [('one_hot_encoder', OneHotEncoder(categories='auto'), [0])],   # The column numbers to be transformed (here is [0] but can be [0, 1, 3])
+    remainder='passthrough'                                         # Leave the rest of the columns untouched
+)
+X = ct.fit_transform(X)
+
+labelencoder_Y = LabelEncoder()
+Y = labelencoder_Y.fit_transform(Y)
