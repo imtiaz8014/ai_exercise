@@ -9,7 +9,7 @@ import pandas as pd
 # Importing the Dataset
 dataset = pd.read_csv('Data.csv')
 X= dataset.iloc[:,:-1].values
-Y= dataset.iloc[:,-1].values
+y= dataset.iloc[:,-1].values
 
 # Taking care of missing data
 from sklearn.impute import SimpleImputer
@@ -26,5 +26,9 @@ ct = ColumnTransformer(
 )
 X = ct.fit_transform(X)
 
-labelencoder_Y = LabelEncoder()
-Y = labelencoder_Y.fit_transform(Y)
+labelencoder_y = LabelEncoder()
+y = labelencoder_y.fit_transform(y)
+
+# Splitting the dataset into the Training set and test set
+from sklearn.model_selection import train_test_split
+X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,shuffle=False)
