@@ -17,6 +17,7 @@ y= dataset.iloc[:,-1].values
 # impute = SimpleImputer(missing_values=np.nan, strategy='mean')
 # impute = impute.fit(X[:,1:3])
 # X[:,1:3] = impute.transform(X[:,1:3])
+
  
 # Encoding categorical data
 ################ if you need it uncommnet it
@@ -40,3 +41,5 @@ X_train,X_test,y_train,y_test = train_test_split(X,y,test_size=0.2,shuffle=False
 # sc_X = StandardScaler()
 # X_train = sc_X.fit_transform(X_train)
 # X_test = sc_X.transform(X_test)
+
+
